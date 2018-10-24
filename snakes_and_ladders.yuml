@@ -1,0 +1,14 @@
+[Dice|-rolls|roll:integer],
+[Board|-state:array|intialize(int hash);modifier_at_position(pos);number_of_tiles():int;win_tile:int],
+[Player|+name:integer;+position:integer|initialize(string);move(integer)],
+[Game|-players:Array of Player;-board:Board;+current_player:Player;-+winner:Player;+log:Array of TurnLog|number_of_players():int;update_current_player():nil;next_turn(int);update_log(int int);move_player(int); validate_movement(int):bool;is_won:bool],
+[TurnLog|-player:Player;-roll:integer;-modifier:integer|modifier_type():symbol],
+[SnakesAndLadders|-dice:Dice;-viewer:Viewer;-board:Board;-game:Game|run()]
+[Viewer||get_player_name(int);start(int);show_update(TurnLog);end(string)],
+[Board]1+->0..m[TurnLog],
+[Game]1+->1[Board],
+[Game]1+->2[Player],
+[SnakesAndLadders]1+->1[Viewer],
+[SnakesAndLadders]1+->1[Dice],
+[SnakesAndLadders]1+->1[Game],
+[SnakesAndLadders]1+->1[Board]
